@@ -31,8 +31,13 @@ import {
   commListenEpic,
 } from './comm';
 
+import {
+  condaKernelsEpic,
+} from './conda-kernel-provider-epic';
+
 const epics = [
   commListenEpic,
+  condaKernelsEpic,
   publishEpic,
   getStoredThemeEpic,
   setThemeEpic,
