@@ -213,7 +213,7 @@ export class Notebook extends React.Component {
       }
       case 'ArrowDown': {
         if (!editorFocused) {
-          store.dispatch(focusNextCell(id, false));
+          store.dispatch(focusNextCell(id, true));
         }
         break;
       }
