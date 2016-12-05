@@ -197,7 +197,13 @@ export class Notebook extends React.Component {
         e.preventDefault();
 
         const shiftXORctrl = (shiftKey || ctrlKey) && !(shiftKey && ctrlKey);
-        if (!shiftXORctrl) return;
+
+        if (!shiftXORctrl) {
+          if (!editorFocused) {
+            store.dispatch(focusCellEditor(id))
+          }
+          break;
+        }
 
         if (shiftKey) {
           store.dispatch(focusNextCell(id, true));
