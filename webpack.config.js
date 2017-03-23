@@ -17,9 +17,16 @@ module.exports = {
     filename: 'webpacked-notebook.js'
   },
   module: {
-    loaders: [
-      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
-      { test: /\.json$/, loader: 'json-loader' },
+    rules: [
+      {
+        loader: 'babel-loader',
+        test: /\.js$/,
+        exclude: /node_modules/
+      },
+      {
+        loader: 'json-loader',
+        test: /\.json$/
+      },
     ]
   },
   resolve: {
