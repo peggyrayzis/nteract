@@ -15,6 +15,9 @@ const nodeModules = {
 
 // plugins for development builds only
 const devPlugins = [
+  // HMR 🎉
+  new webpack.HotModuleReplacementPlugin(),
+
   // prevent webpack from killing watch on build error
   new webpack.NoEmitOnErrorsPlugin(),
 ];
@@ -124,6 +127,13 @@ module.exports = {
     path: path.join(__dirname, 'lib'),
     chunkFilename: '[name].[hash].js',
     filename: '[name].[hash].js',
+  },
+
+  devServer: {
+    contentBase: path.join(__dirname, 'lib'),
+    compress: true,
+    port: 8080,
+    hot: true
   },
 
   resolve: {
