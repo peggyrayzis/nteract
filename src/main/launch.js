@@ -1,6 +1,7 @@
 import path from 'path';
-
 import { shell, BrowserWindow } from 'electron';
+
+import installExtensions from './dev';
 
 let launchIpynb;
 
@@ -34,7 +35,14 @@ export function launch(filename) {
   });
 
   const index = path.join(__dirname, '..', '..', 'static', 'index.html');
-  win.loadURL(`file://${index}`);
+
+  const windowUrl = process.env.NODE_ENV === 'development'
+    ? 'http://localhost:8080'
+    : `file://${index}`;
+
+  win.loadURL(windowUrl);
+
+  win.on('ready', installExtensions);
 
   win.webContents.on('did-finish-load', () => {
     if (filename) {

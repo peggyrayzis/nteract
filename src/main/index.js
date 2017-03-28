@@ -113,7 +113,12 @@ export function createSplashSubscriber() {
     });
 
     const index = join(__dirname, '..', '..', 'static', 'splash.html');
-    win.loadURL(`file://${index}`);
+
+    const windowUrl = process.env.NODE_ENV === 'development'
+      ? 'http://localhost:8080'
+      : `file://${index}`;
+
+    win.loadURL(windowUrl);
     win.once('ready-to-show', () => {
       win.show();
     });
