@@ -187,6 +187,7 @@
     "babel-preset-react": "^6.23.0",
     "chai": "^3.4.1",
     "chai-immutable": "^1.6.0",
+    "clean-webpack-plugin": "^0.1.16",
     "cross-env": "^3.2.3",
     "electron": "1.6.2",
     "electron-builder": "^16.0.1",
