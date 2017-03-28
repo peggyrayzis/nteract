@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
@@ -24,8 +25,8 @@ const devPlugins = [
 
 // base plugins for all builds
 const plugins = [
-  // remove build/client dir before compile time
-  new CleanWebpackPlugin(path.join(__dirname, 'lib')),
+  // remove lib/app dir before compile time
+  new CleanWebpackPlugin(path.join(__dirname, 'lib/app')),
 
   new LodashModuleReplacementPlugin(),
 
@@ -37,6 +38,14 @@ const plugins = [
     'process.env': {
       NODE_ENV: JSON.stringify(process.env.NODE_ENV)
     }
+  }),
+
+  // interpolate index.ejs to index.html, add assets to html file
+  new HtmlWebpackPlugin({
+    title: 'nteract',
+    template: 'static/index.ejs',
+    inject: 'body',
+    filename: 'index.html',
   }),
 
   new webpack.LoaderOptionsPlugin({
@@ -112,7 +121,7 @@ module.exports = {
         ],
       },
 
-      // css files. TODO: remove after converting to css-in-js
+      // import css files
       {
         test: /\.css$/,
         use: [
@@ -124,13 +133,13 @@ module.exports = {
   },
 
   output: {
-    path: path.join(__dirname, 'lib'),
+    path: path.join(__dirname, 'lib/app'),
     chunkFilename: '[name].[hash].js',
     filename: '[name].[hash].js',
   },
 
   devServer: {
-    contentBase: path.join(__dirname, 'lib'),
+    contentBase: path.join(__dirname, 'lib/app'),
     compress: true,
     port: 8080,
     hot: true

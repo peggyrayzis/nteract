@@ -6,7 +6,7 @@ import installExtension, {
 export default function installExtensions() {
   if (process.env.NODE_ENV !== 'production') {
     /* eslint-disable no-console */
-    return Promise.all([
+    Promise.all([
       installExtension(REACT_DEVELOPER_TOOLS),
       installExtension(REDUX_DEVTOOLS)
     ])

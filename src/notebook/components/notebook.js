@@ -239,7 +239,6 @@ export class Notebook extends React.PureComponent {
           kernelSpecDisplayName={this.props.kernelSpecDisplayName}
           executionState={this.props.executionState}
         />
-        <link rel="stylesheet" href={`../static/styles/theme-${this.props.theme}.css`} />
       </div>
     );
   }
