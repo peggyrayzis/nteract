@@ -6,8 +6,8 @@ import installExtensions from './dev';
 let launchIpynb;
 
 export function getPath(url) {
-  const nUrl = url.substring(url.indexOf('static'), path.length);
-  return path.join(__dirname, '..', '..', nUrl.replace('static/', ''));
+  const nUrl = url.substring(url.indexOf('assets'), path.length);
+  return path.join(__dirname, '..', nUrl.replace('assets/', ''));
 }
 
 export function deferURL(event, url) {
@@ -19,7 +19,7 @@ export function deferURL(event, url) {
   }
 }
 
-const iconPath = path.join(__dirname, '..', '..', 'static', 'icon.png');
+const iconPath = path.join(__dirname, '..', '..', 'build', 'icon.png');
 
 const initContextMenu = require('electron-context-menu');
 
@@ -34,7 +34,7 @@ export function launch(filename) {
     title: 'nteract',
   });
 
-  const index = path.join(__dirname, '..', '..', 'static', 'index.html');
+  const index = path.join(__dirname, '..', '..', 'lib', 'app', 'index.html');
 
   const windowUrl = process.env.NODE_ENV === 'development'
     ? 'http://localhost:8080'
