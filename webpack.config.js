@@ -183,11 +183,11 @@ module.exports = {
       'global.console': 'console',
     },
     extensions: ['.js', '.jsx'],
-    modules: [
-      'node_modules',
-      path.join(__dirname, 'packages', 'display-area', 'node_modules'),
-      path.join(__dirname, 'packages', 'transforms-full', 'node_modules'),
-    ],
+    // modules: [
+    //   'node_modules',
+    // path.join(__dirname, 'packages', 'display-area', 'node_modules'),
+    // path.join(__dirname, 'packages', 'transforms-full', 'node_modules'),
+    // ],
   },
 
   node: {

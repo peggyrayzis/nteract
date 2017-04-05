@@ -7,6 +7,9 @@
       "lodash",
       "transform-class-properties",
       "transform-flow-strip-types",
-      "transform-object-rest-spread"
+      "transform-object-rest-spread",
+      ["module-resolver", {
+        "root": ["./packages/**/node_modules"]
+      }]
     ]
   }
